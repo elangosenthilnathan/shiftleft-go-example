@@ -4,12 +4,13 @@ name: ShiftLeft
 
 on:
   pull_request:
+  push:
 
 jobs:
   NextGen-Static-Analysis:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - uses: actions/setup-go@v2
       with:
         go-version: '^1.14'
@@ -22,7 +23,7 @@ jobs:
 
     - name: NextGen Static Analysis
       run: |
-        ${GITHUB_WORKSPACE}/sl analyze --app ShiftLeftHSLGo14 --tag branch=${{ github.head_ref }} --go --cpg $(pwd)
+        ${GITHUB_WORKSPACE}/sl analyze --app ShiftLeftHSLGo145 --tag branch=${{ github.head_ref }} --go --cpg $(pwd)
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
     - name: Create status check
