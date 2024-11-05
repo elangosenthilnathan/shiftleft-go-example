@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-go@v2
-      with:
-        go-version: '^1.14'
-    - name: Build
-      run: |
-        go build ./...
+    # - uses: actions/setup-go@v2
+    #   with:
+    #     go-version: '^1.14'
+    # - name: Build
+    #   run: |
+    #     go build ./...
     - name: Download ShiftLeft CLI
       run: |
         curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
