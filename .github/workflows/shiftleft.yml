@@ -23,7 +23,7 @@ jobs:
 
     - name: NextGen Static Analysis
       run: |
-        ${GITHUB_WORKSPACE}/sl analyze --app ShiftLeftHSLGo1455 --tag branch=${{ github.head_ref }} --exclude-langueges go $(pwd)
+        ${GITHUB_WORKSPACE}/sl analyze --app ShiftLeftHSLGo1455 --exclude-langueges golang $(pwd)
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
     # - name: Create status check
