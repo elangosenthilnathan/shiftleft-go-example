@@ -8,22 +8,23 @@ on:
 
 jobs:
   NextGen-Static-Analysis:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on:shiftleft/core-latest
     steps:
     - uses: actions/checkout@v4
-    # - uses: actions/setup-go@v2
-    #   with:
-    #     go-version: '^1.14'
-    # - name: Build
-    #   run: |
-    #     go build ./...
-    - name: Download ShiftLeft CLI
+    - uses: actions/setup-go@v2
+      with:
+        go-version: '^1.14'
+    - name: Build
       run: |
-        curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
+        go build ./...
+    # - name: Download ShiftLeft CLI
+    #   run: |
+    #     curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
 
     - name: NextGen Static Analysis
       run: |
-        ${GITHUB_WORKSPACE}/sl analyze --app ShiftLeftHSLGo1455 --verbose --exclude-languages go $(pwd)
+        sl analyze --app ShiftLeftHSLGo1455 --verbose $(pwd)
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
     # - name: Create status check
