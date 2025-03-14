@@ -43,7 +43,7 @@ jobs:
     - name: Upload result to GitHub Code Scanning
       uses: github/codeql-action/upload-sarif@v3
       with:
-        sarif_file: report/qwiet-sarif-report-elangosenthilnathan_github_java_demo.sarif       
+        sarif_file: report/qwiet-sarif-report-elangosenthilnathan_shiftleft-go-example.sarif       
         category: qwiet-prezero    
 
     # - name: Create Json Report
