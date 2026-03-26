@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Run sl analyze 1
+    - name: Run sl analyze 
       shell: bash
       run: |
         sl analyze --verbose --app "${GITHUB_REPOSITORY_OWNER}_${GITHUB_REPOSITORY#*/}" .
